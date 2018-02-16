@@ -1,0 +1,22 @@
+<div class="burger-actions">
+  <div class="close icon-button" {{action "close"}}>
+    {{fa-icon "times"}} close
+  </div>
+</div>
+<div class="burger-menu-links">
+  <div class="link">
+    Úvěry
+  </div>
+  <div class="link">
+    Bonita
+  </div>
+  <div class="link">
+    Státy a koeficienty
+  </div>
+  <div class="link">
+    RZP
+  </div>
+  <div class="link">
+    {{#link-to "saving" click=(action "close")}}Spoření{{/link-to}}
+  </div>
+</div>

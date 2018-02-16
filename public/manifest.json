@@ -1,0 +1,18 @@
+{
+  "name": "ČMSS kalkulačka",
+  "short_name": "ČMSS",
+  "theme_color": "#e2001a",
+  "background_color": "#e2001a",
+  "display": "standalone",
+  "orientation": "portrait",
+  "Scope": "/",
+  "start_url": ".",
+  "icons": [
+    {
+      "src": "/cmss-logo-white.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}

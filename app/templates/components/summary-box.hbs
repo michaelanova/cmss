@@ -1,0 +1,26 @@
+
+{{#if isOpen}}
+  <div class="icon-button" {{action "close"}}>
+    {{fa-icon "angle-down"}}
+  </div>
+
+  <div class="summary-detail">
+    {{yield}}
+  </div>
+{{/if}}
+
+<div class="summary-main">
+  {{#unless isOpen}}
+    <div class="icon-button" {{action "open"}}>
+      {{fa-icon "angle-up"}}
+    </div>
+  {{/unless}}
+  <div class="summary-row">
+    <span class="label">{{labelFirst}}</span>
+    <span class="value">{{valueFirst}} Kč</span>
+  </div>
+  <div class="summary-row">
+    <span class="label">{{labelSecond}}</span>
+    <span class="value">{{valueSecond}} %</span>
+  </div>
+</div>

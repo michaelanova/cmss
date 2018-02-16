@@ -1,0 +1,124 @@
+<div class="saving-data">
+  <div class="form-group">
+    <div class="input-field select">
+      <p class="label">tarif</p>
+      {{!select-field model=authors selected=song.author name="name" label="Autor" required=true}}
+      <select class="" name="">
+        <option value="">Aktiv bonusový program 7/16</option>
+        <option value="">Aktiv bez bonusu 7/16</option>
+      </select>
+    </div>
+
+    <div class="input-field">
+      {{input type="text" value=8000 autofocus="autofocus" placeholder=" " id="ulozka" class="form-control"}}
+      <label class="control-label" for="ulozka">Měsíční úložka</label>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="input-field">
+      {{input type="title"  autofocus="autofocus" placeholder=" " id="julozka"}}
+      <label class="control-label" for="julozka">Jednorázová úložka na počátku smlouvy</label>
+    </div>
+
+    <div class="input-field">
+      {{input type="title"  autofocus="autofocus" placeholder=" " id="premie"}}
+      <label class="control-label" for="premie">Prémie (při uzavření smlouvy)</label>
+    </div>
+
+    <div class="input-field">
+      {{input type="title" value=6  autofocus="autofocus" placeholder=" " id="doba"}}
+      <label class="control-label" for="doba">Doba spoření</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-field">
+      {{input type="title" value=800000 autofocus="autofocus" placeholder=" " id="cil"}}
+      <label class="control-label" for="cil">Cílová částka</label>
+    </div>
+
+    <div class="input-field">
+      {{input type="title" value=1600000  autofocus="autofocus" placeholder=" " id="cc" readonly=true}}
+      <label class="control-label" for="cc">Doporučená CČ</label>
+    </div>
+  </div>
+</div>
+
+<div class="customer-data">
+  <div class="form-title">
+    Kontakt
+  </div>
+  <div class="form-group">
+    <div class="input-field">
+      {{input type="text" value="" autofocus="autofocus" placeholder=" " id="name"}}
+      <label class="control-label" for="name">Jméno a přijmení</label>
+    </div>
+
+    <div class="input-field">
+      {{input type="text" value="" autofocus="autofocus" placeholder=" " id="address" readonly=true}}
+      <label class="control-label" for="address">Bytem</label>
+    </div>
+
+    <div class="input-field">
+      {{input type="text" value="" autofocus="autofocus" placeholder=" " id="contact" readonly=true}}
+      <label class="control-label" for="contact">Kontakt</label>
+    </div>
+
+    <div class="input-field">
+      {{textarea type="text" value="" autofocus="autofocus" placeholder=" " id="pozn" readonly=true}}
+      <label class="control-label" for="pozn">Poznámka</label>
+    </div>
+  </div>
+</div>
+{{#summary-box
+  labelFirst="Celkem naspořeno"
+  labelSecond="Efektivní sazba [p.a.]"
+  valueFirst=totalSaved
+  valueSecond=effectiveRate
+}}
+  <div class="summary-row {{unless stateAidEnabled "disabled"}}">
+    <span class="label">{{x-toggle value=stateAidEnabled theme='ios' size='small' onToggle=(action (mut stateAidEnabled))}}Státní podpora</span>
+    <span class="value">
+      {{#if stateAidEnabled}}
+        {{stateAid}} Kč
+      {{else}}
+        Ne
+      {{/if}}
+    </span>
+  </div>
+  <div class="summary-row">
+    <span class="label">Úroky</span>
+    <span class="value">{{interest}} Kč</span>
+  </div>
+  <div class="summary-row">
+    <span class="label">Úrokový bonus</span>
+    <span class="value">{{interestBonus}} Kč</span>
+  </div>
+  <div class="summary-row {{unless taxEnabled "disabled"}}">
+    <span class="label">{{x-toggle value=taxEnabled theme='ios' size='small' onToggle=(action (mut taxEnabled))}}Daň z úroků</span>
+    <span class="value">
+      {{#if taxEnabled}}
+        {{tax}} Kč
+      {{else}}
+        Ne
+      {{/if}}
+    </span>
+
+  </div>
+  <div class="summary-row">
+    <span class="label">Prémie</span>
+    <span class="value">{{premie}}</span>
+  </div>
+  <div class="summary-row {{unless paymentsEnabled "disabled"}}">
+    <span class="label">{{x-toggle value=paymentsEnabled theme='ios' size='small' onToggle=(action (mut paymentsEnabled))}}Poplatky</span>
+    <span class="value">
+      {{#if paymentsEnabled}}
+        {{payments}} Kč
+      {{else}}
+        Ne
+      {{/if}}
+    </span>
+  </div>
+{{/summary-box}}

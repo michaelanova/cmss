@@ -1,0 +1,380 @@
+$black: #000;
+$black-transparent: rgba(0, 0, 0, .2);
+$gray: #7d7d7d;
+$gray-light: #f5f5f5;
+$gray-lighter: #fbfbfb;
+$gray-transparent: rgba(185, 185, 185, .16);
+$red: #e2001a;
+$red-dark: #c2061b;
+$white: #fff;
+$white-transparent: rgba(255, 255, 255, .2);
+$white-transparent-input: rgba(255, 255, 255, .1);
+
+$menu-height: 50px;
+$summary-box-height: 8em;
+$line-height-default: 1.4;
+$letter-spacing-default: .02em;
+
+html,
+body,
+body > .ember-view {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  //font-family: sans-serif;
+  font-family: "Calibri", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  letter-spacing: $letter-spacing-default;
+  line-height: $line-height-default;
+  margin: 0;
+  overflow-x: hidden;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
+}
+
+main {
+  padding-top: $menu-height;
+}
+
+[data-ember-action]:not(:disabled),
+.clickable {
+  cursor: pointer;
+}
+
+.input-field {
+  margin: 0 0 1.5em;
+  position: relative;
+
+  &.full-width {
+    width: 100%;
+
+    input,
+    textarea {
+      width: 100%;
+    }
+  }
+
+  textarea {
+    min-height: 150px;
+    width: 100%;
+  }
+
+  label {
+    color: $gray;
+    font-size: .9em;
+    left: 0;
+    position: absolute;
+    top: .75em;
+    transition: all .25s;
+  }
+
+  input,
+  textarea {
+    /*background: none;
+    border: 0;
+    border-bottom: 1px solid $primary;
+    border-radius: 0;
+    outline: 0;
+    padding: 1em 0;*/
+
+
+    &:focus + label {
+      transform: translateY(-110%);
+      font-size: .8em;
+      left: 0;
+    }
+
+    &:not(:placeholder-shown) + label {
+      transform: translateY(-110%);
+      font-size: .8em;
+      left: 0;
+    }
+
+    &:not(:-ms-input-placeholder) + label {
+      transform: translateY(-110%);
+      font-size: .8em;
+      left: 0;
+    }
+  }
+
+  .has-units {
+    padding-right: 2em;
+
+    .units {
+      color: $gray;
+      font-size: .9em;
+      padding: .7em 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+  }
+}
+
+  .errors {
+    margin: -1em 0 1.5em;
+  }
+
+  @supports (-ms-ime-align: auto) {
+    input + label {
+      transform: translateY(-110%);
+      color: $gray;
+      font-size: .8em;
+      left: 0;
+    }
+  }
+}
+
+input,
+select,
+textarea {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid $red;
+  border-radius: 0;
+  color: $black;
+  font-family: "Calibri", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  outline: 0;
+  padding: 1.2em 0 .6em;
+}
+
+select {
+  padding: .5em 0 .8em;
+}
+
+select option {
+  padding: 0;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.icon-button {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .6em;
+  justify-content: center;
+  line-height: 1em;
+  text-transform: uppercase;
+
+  .fa {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.main-header {
+  align-items: center;
+  background: $white;
+  box-shadow: 1px 1px 5px $black-transparent;
+  box-sizing: border-box;
+  display: flex;
+  height: $menu-height;
+  justify-content: space-between;
+  padding: .25em 1em;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  .logo {
+    img {
+      max-height: 30px;
+    }
+  }
+
+  &.burger-is-open {
+    z-index: 1000;
+  }
+}
+
+.page-title,
+.form-title {
+  background: $gray-light;
+  font-size: 1.1em;
+  padding: 1em;
+  text-align: center;
+}
+
+.form-title {
+  text-align: left;
+}
+
+.burger-menu {
+  background: $red;
+  bottom: 0;
+  color: $white;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate3d(150vw, 0, 0);
+  transition: all .25s;
+  z-index: 1000;
+
+  &.is-open {
+    transform: translate3d(0, 0, 0);
+    transition: all .25s;
+  }
+
+  .burger-actions {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    justify-content: flex-end;
+    padding: .25em .5em;
+  }
+
+  .burger-menu-links {
+    .link {
+      border-bottom: 1px solid $white-transparent;
+      padding: 1em;
+      text-align: left;
+      width: 100%;
+
+      a {
+        color: $white;
+        text-decoration: none;
+      }
+
+      .active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.summary-box {
+  background: $red-dark;
+  bottom: 0;
+  box-sizing: border-box;
+  color: $white;
+  height: $summary-box-height;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 100vh;
+  transition: all .25s;
+  z-index: 101;
+
+  &.is-open {
+    height: 100vh;
+    top: 0;
+    transition: all .25s;
+  }
+
+  .fa {
+    cursor: pointer;
+    padding: .25em 0;
+  }
+
+  .burger-actions {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    justify-content: flex-end;
+    padding: .25em .5em;
+  }
+
+  .summary-main {
+    background: $red;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    position: fixed;
+    right: 0;
+
+    .value {
+      font-weight: bold;
+    }
+
+    .fa-angle-up {
+      background: $red-dark;
+    }
+
+    .summary-row {
+      &:first-child {
+        padding-top: 1em;
+      }
+
+      &:last-child {
+        padding: .25em 1em 1em;
+      }
+    }
+
+    .label {
+      font-size: .9em;
+    }
+  }
+
+  .summary-detail {
+    max-height: calc(100vh - 8em);
+    overflow-y: scroll;
+
+    .summary-row {
+      border-bottom: 1px solid $white-transparent;
+      padding: 1em;
+
+      &.disabled {
+        .value {
+          opacity: .8;
+        }
+      }
+    }
+
+    .value {
+      font-weight: bold;
+    }
+
+    .label {
+      align-items: center;
+      display: flex;
+
+      .x-toggle-component {
+        margin-right: .5em;
+      }
+    }
+  }
+
+  .summary-row {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 1em 0;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+.calculate {
+  margin: 0 0 $summary-box-height;
+
+  .form-group {
+    border-width: 1px 0;
+    margin-bottom: 1em;
+    padding: 0 1em 1.2em;
+
+    .input-field {
+      margin: 1.5em 0 1em;
+    }
+
+    input,
+    select {
+      width: 100%;
+    }
+
+    .label {
+      color: $gray;
+      font-size: .8em;
+      margin: 0;
+    }
+  }
+}
