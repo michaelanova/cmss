@@ -176,7 +176,7 @@ select option {
   display: flex;
   height: $menu-height;
   justify-content: space-between;
-  padding: .25em 1em;
+  padding: .25em .25em .25em 1em;
   position: fixed;
   width: 100%;
   z-index: 100;
